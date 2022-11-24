@@ -1,0 +1,18 @@
+{% extends 'sample.html' %}
+{% load static %}
+{% block title %}Image Page{% endblock %}
+{% block content %}
+<div class = "container"> 
+    <div class = "row">
+        {% if var %}
+        <div class = "col-md-6" style = "margin: 0 auto">
+            <img src = "{% static 'img/IMG_20211227_154007.jpg' %}" class="img-fluid" alt="Responsive-img">
+        </div>
+        {% else %}
+        <div class = "col-md-6" style = "margin: 0 auto">
+            <img src = "{% static 'img/IMG_20211227_154007.jpg' %}" class="img-fluid" alt="Responsive-img">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

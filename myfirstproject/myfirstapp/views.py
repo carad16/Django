@@ -41,3 +41,28 @@ def mythirdpage(request):
         "ans": ans
     }
     return render(request, "sample1.html",context=mydictionary) 
+
+def myimgpage(request, imgname):
+    myimgname = str(imgname)
+    myimgname = myimgname.lower()
+    print(myimgname)
+    if myimgname == "django":
+        var =True
+    elif myimgname == "python":
+        var = False
+    mydictionary = {
+        "var": var
+    }
+
+    return render(request, "imgpage.html", context=mydictionary)
+
+def myform(request): 
+    return render(request, "myform.html")
+
+def submitmyform(request):
+    mydictionary = {
+        "var1" : request.POST['mytext'],
+        "var2" : request.POST['mytextarea'],
+        "method" : request.method
+    }
+    return JsonResponse(mydictionary)

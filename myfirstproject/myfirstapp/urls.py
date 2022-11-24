@@ -9,4 +9,7 @@ urlpatterns = [
     path('myfirstpage', views.myfirstpage,name="myfirstpage"),
     path('mysecondpage', views.mysecondpage,name="mysecondpage"),
     path('mythirdpage', views.mythirdpage,name="mythirdpage"),
+    path('myimgpage/<str:imgname>', views.myimgpage,name="myimgpage"),
+    path('myform', views.myform, name="myform"),
+    path('submitmyform', views.submitmyform, name='submitmyform')
 ]
