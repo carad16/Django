@@ -1,9 +1,11 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.template import loader
-
-
+from .forms import *
 # Create your views here.
+def error_404_view(request,exception):
+    return render(request,"404.html")
+
 def myfunctioncall(request):
     return HttpResponse("Hello World")
 
@@ -66,3 +68,47 @@ def submitmyform(request):
         "method" : request.method
     }
     return JsonResponse(mydictionary)
+
+def myform1(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            title = request.POST['title']
+            subject = request.POST['subject']
+            email = request.POST['email']
+        #    print(title)
+        #   print(subject)
+        #    var = str("Form Submitted " + str(request.method))
+        #    return HttpResponse(var)
+        #else:
+            mydictionary = {
+            "form": FeedbackForm()
+        }
+            errorflag = False
+            Errors = []
+            if title != title.upper():
+                #mydictionary["error"]=True
+                #mydictionary["errormsg"] = "Title should be in Capital"
+                #return render(request, "myform1.html", context=mydictionary)
+                errorflag = True
+                errormsg = "Title should be in Capital"
+                Errors.append(errormsg)
+            import re
+            regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+            if not re.search(regex, email):
+                errorflag = True
+                errormsg = "Not a Valid Email Address"
+                Errors.append(errormsg)
+            if errorflag != True:
+                mydictionary["Success"] = True
+                mydictionary["successmsg"] = "Form Submitted"
+            mydictionary["error"] = errorflag
+            mydictionary["errors"] = Errors
+            return render(request, "myform1.html", context=mydictionary)
+
+    elif request.method == "GET":
+        form = FeedbackForm()
+        mydictionary = {
+            "form": form
+        }
+    return render(request, "myform1.html", context=mydictionary)

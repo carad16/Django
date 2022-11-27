@@ -1,0 +1,10 @@
+{% extends 'sample.html' %}
+{% block title %}404 Error Page{% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Page Not Found</h1>
+    <p class="lead">Sorry, this page is missing or does not exist</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="{% url 'sample' %}" role="button">Learn more</a>
+  </div>
+{% endblock %}
