@@ -16,24 +16,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="#about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link" href="#instructions">Instructions</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -48,20 +34,48 @@
     <div class="col-md-6" style="margin: 1rem auto 0 auto;">
       <div class="card">
         <div class="card-body">
-          <form method="GET" action="#">
+          <form method="GET" action="{% url 'submitquery' %}">
             <div class="form-group">
               <input type="search" class="form-control" name="query" id="query">
             </div>
             <div class="row" style="margin: 1rem auto 0 auto;">
-            <div class="col-6" >
-              <input type="submit" class="btn btn-success" style="display:block; margin: 0 auto;">
+              <div class="col-6" >
+                <input type="submit" class="btn btn-success" style="display:block; margin: 0 auto;">
+              </div>
+              <div class="col-6">
+                <input type="reset" class="btn btn-danger" style="display:block; margin: 0 auto;">
+              </div>
             </div>
-            <div class="col-6">
-              <input type="reset" class="btn btn-danger" style="display:block; margin: 0 auto;">
-        
+
+  
+            <div class="row">
+                <div class="col-md-6" style="margin: 2rem auto 0 auto;">
+                <p class="display-4" id="about" name="about" style="text-align: center;">
+                  About
+                </p>
+                </div>
+                <hr>
+                <p class="lead" style="text-align: center;">
+                  Our Calculator App can perform mathematical operations.
+                </p>
             </div>
-            </div>
-    
+      
+            <div class="row">
+              <div class="col-md-6" style="margin: 2rem auto 0 auto;">
+              <p class="display-4" id="instructions" name="instructions" style="text-align: center;">
+                Instructions
+              </p>
+              </div>
+              <hr>
+              <ul class="list-group">
+                <li class="list-group-item">+ Addition</li>
+                <li class="list-group-item">- Subtraction</li>
+                <li class="list-group-item">* Multiplication</li>
+                <li class="list-group-item">/ Division</li>
+                <li class="list-group-item">// Floor Division</li>
+                <li class="list-group-item">( ) Parenthesis</li>
+              </ul>
+          </div>
            
           </form>
         </div>
